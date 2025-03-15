@@ -106,6 +106,7 @@
     git
     gcc
     micromamba
+    htop
   ];
 
   # enable zsh as default
