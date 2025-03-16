@@ -1,15 +1,18 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstablePkgs, inputs, ... }:
 
 {
   imports = [
     ./sh.nix
+    inputs.plasma-manager.homeManagerModules.plasma-manager
+    ./plasma/panel.nix
+    ./plasma/effects.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "advait";
   home.homeDirectory = "/home/advait";
-
+  home.enableNixpkgsReleaseCheck = false;
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -44,23 +47,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/advait/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
@@ -79,8 +65,36 @@
     };
   };
 
-}
+  # plasma config
+  programs.plasma = {
+    enable = true;
+    # Basic workspace settings
+    workspace = {
+      theme = "breeze-dark";
+      colorScheme = "BreezeDark";
+      clickItemTo = "select";
+    };
+  };
 
+  # Qt/GTK theming
+  gtk = {
+    enable = true;
+    theme = {
+      package = unstablePkgs.kdePackages.breeze-gtk;  # Use unstable
+      name = "Breeze";
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "kde";
+    style = {
+      name = "darkly";
+      package = inputs.darkly.packages.${pkgs.system}.darkly-qt5;  # Use from inputs
+    };
+  };
+
+}
 # To roll-back to previous configs:
 # 1) home-manager generations - lists prev versions, most recent at top
 # 2) copy the generation path

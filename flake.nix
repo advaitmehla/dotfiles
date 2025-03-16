@@ -29,11 +29,13 @@
 
     };
 
-    outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, kwin-better-blur, darkly, ...}: 
+    outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, kwin-better-blur, darkly, plasma-manager, ...}: 
     let 
         lib = nixpkgs.lib; # done to "pass" lib to outputs - otherwise lib.xyz wont work
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
+        unstablePkgs = nixpkgs-unstable.legacyPackages.${system};  # Add this
+        inputs = { inherit kwin-better-blur darkly plasma-manager; };  # And add plasma-window-title here
     in 
     {
         nixosConfigurations = {
@@ -63,6 +65,9 @@
             # give it any name for your config - usually username
             advait = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
+                extraSpecialArgs = { 
+                    inherit inputs unstablePkgs;  # Pass both inputs and unstablePkgs
+                };
                 modules = [ ./home.nix ];
             };
 
