@@ -34,7 +34,11 @@
         lib = nixpkgs.lib; # done to "pass" lib to outputs - otherwise lib.xyz wont work
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        unstablePkgs = nixpkgs-unstable.legacyPackages.${system};  # Add this
+        overlay-kde-rounded = import ./overlays/kde-rounded-corners;
+        unstablePkgs = import nixpkgs-unstable {
+            inherit system;
+            overlays = [ overlay-kde-rounded ];  # Apply overlay to unstable too
+        };
         inputs = { inherit kwin-better-blur darkly plasma-manager; };  # And add plasma-window-title here
     in 
     {

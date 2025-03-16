@@ -57,8 +57,8 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = lib.mkForce true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -69,14 +69,12 @@ services.xserver = {
 #  enable = true;
   videoDrivers = ["modesetting"];
   displayManager.sddm = lib.mkForce {
-    enable = true;
     wayland.enable = false;
     };
-  desktopManager.plasma6.enable = true;
   };
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Enable CUPS to print documents.
