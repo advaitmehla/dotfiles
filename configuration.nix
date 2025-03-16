@@ -2,13 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, unstablePkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      (import ./plasma.nix { 
+        inherit inputs;
+        pkgs = unstablePkgs;  # Pass the unstable packages to plasma.nix
+      })    
     ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      kdePackages = unstablePkgs.kdePackages;
+    })
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -93,6 +102,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.partition-manager.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -106,7 +116,6 @@
     git
     gcc
     micromamba
-    htop
   ];
 
   # enable zsh as default
