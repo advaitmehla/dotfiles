@@ -2,6 +2,12 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-powerlevel10k
+  ];
+
   programs.zsh = {
     enable = true;
     shellAliases = {
