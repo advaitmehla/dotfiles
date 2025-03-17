@@ -6,6 +6,7 @@
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./plasma/panel.nix
     ./plasma/effects.nix
+    ./plasma/darkly.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
