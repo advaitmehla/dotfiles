@@ -44,7 +44,7 @@
     # gfortran
   ] ++ [
     unstablePkgs.plasma-panel-colorizer
-    unstablePkgs.plasma-window-title-applet
+    # unstablePkgs.plasma-window-title-applet
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
