@@ -23,6 +23,16 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  # Add KDE application registration
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = ["dolphin.desktop"];
+      "x-scheme-handler/file" = ["dolphin.desktop"];
+      "x-scheme-handler/trash" = ["dolphin.desktop"];
+    };
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
