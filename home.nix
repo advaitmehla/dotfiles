@@ -5,7 +5,7 @@
     ./sh.nix
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./plasma/panel.nix
-    ./plasma/effects.nix
+    # ./plasma/blur.nix
     ./plasma/darkly.nix
   ];
 
