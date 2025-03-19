@@ -1,81 +1,44 @@
 {
-  description = "Initial NixOS flake";
 
-  inputs = {
-    # Core packages (latest stable and unstable as of March 2025)
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    
-    # Home Manager for user-specific configuration
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+    description = "Initial flake!";
+
+    inputs = {
+        # give url to get packages - latest as of March 2025. Does this have to be updated later?
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+        home-manager.url = "github:nix-community/home-manager/release-24.11";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs"; # make sure versions are same
     };
 
-    # KDE-related customizations
-    darkly = {
-      url = "github:Bali10050/Darkly";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    kwin-better-blur = {
-      url = "github:taj-ny/kwin-effects-forceblur/window-rules";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    kwin-effects-startupfeedback-busy-cursor = {
-      url = "github:taj-ny/kwin-effects-startupfeedback-busy-cursor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.home-manager.follows = "home-manager";
-    };
-  };
+    outputs = {self, nixpkgs, home-manager, ...}:
+    let
+        lib = nixpkgs.lib; # done to "pass" lib to outputs - otherwise lib.xyz wont work
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+        nixosConfigurations = {
+            # give it any name for your config - usually hostname
+            nixos = lib.nixosSystem {
+                inherit system;
+                modules = [ ./configuration.nix ];
+            };
+        };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @ inputs:
-  let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
+        homeConfigurations = {
+            # give it any name for your config - usually username
+            advait = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                modules = [ ./home.nix ];
+            };
 
-    # KDE rounded corners overlay
-    overlay-kde-rounded = import ./overlays/kde-rounded-corners;
-  in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      inherit system;
-      
-      modules = [
-        # Use unstable channel for KDE packages only
-        ({ config, pkgs, ... }: {
-          nixpkgs.overlays = [
-            (final: prev: {
-              kdePackages = nixpkgs-unstable.legacyPackages.${prev.system}.kdePackages;
-            })
-          ];
-        })
-        ./configuration.nix
-      ];
-
-      specialArgs = {
-        inherit unstablePkgs inputs;
-      };
+        };
     };
 
-    homeConfigurations.advait = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {
-        inherit unstablePkgs inputs;
-      };
-      modules = [ ./home.nix ];
-    };
-  };
+# to update system 1) nix flake update
+#                  2) sudo nixos-rebuild switch --flake .
+#                  3) home-manager switch --flake .
 
-  # Instructions for updating system:
-  # 1) nix flake update
-  # 2) sudo nixos-rebuild switch --flake .
-  # 3) home-manager switch --flake .
-  
-  # Fix flake.lock permission issue if needed:
-  # sudo chown advait flake.lock
-  # sudo chgrp users flake.lock
+# flake.lock permission issue:
+# sudo chown advait flake.lock
+# sudo chgrp users flake.lock
 }

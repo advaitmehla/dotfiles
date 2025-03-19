@@ -2,22 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, unstablePkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import ./plasma.nix { 
-        inherit inputs;
-        pkgs = unstablePkgs;  # Pass the unstable packages to plasma.nix
-      })    
     ];
-  nixpkgs.overlays = [
-    (final: prev: {
-      kdePackages = unstablePkgs.kdePackages;
-    })
-  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -57,24 +48,13 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = lib.mkForce true;
+  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-    };
-services.xserver = {
-#  enable = true;
-  videoDrivers = ["modesetting"];
-  displayManager.sddm = lib.mkForce {
-    wayland.enable = false;
-    };
-  };
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
   };
 
   # Enable CUPS to print documents.
@@ -113,7 +93,6 @@ services.xserver = {
 
   # Install firefox.
   programs.firefox.enable = true;
-  programs.partition-manager.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -127,6 +106,9 @@ services.xserver = {
     git
     gcc
     micromamba
+    htop
+    home-manager
+    binutils
   ];
 
   # enable zsh as default
