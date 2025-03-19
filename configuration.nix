@@ -72,8 +72,7 @@
     description = "Advait Mehla";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
-      vscode
+      # home manager used for this
     ];
   };
 
@@ -103,8 +102,6 @@
     shellInit = ''
       export MAMBA_ROOT_PREFIX="$HOME/micromamba"
       eval "$(micromamba shell hook --shell zsh)"
-    '';
-    interactiveShellInit = ''
       micromamba activate basic
     '';
   };
