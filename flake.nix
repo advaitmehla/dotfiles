@@ -28,13 +28,13 @@
       
       modules = [
         # Use unstable channel for KDE packages only
-        ({ config, pkgs, ... }: {
-          nixpkgs.overlays = [
-            (final: prev: {
-              kdePackages = nixpkgs-unstable.legacyPackages.${prev.system}.kdePackages;
-            })
-          ];
-        })
+        # ({ config, pkgs, ... }: {
+        #   nixpkgs.overlays = [
+        #     (final: prev: {
+        #       kdePackages = nixpkgs-unstable.legacyPackages.${prev.system}.kdePackages;
+        #     })
+        #   ];
+        # })
         ./configuration.nix
       ];
 
