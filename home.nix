@@ -18,10 +18,10 @@
     curl
     kdePackages.kate
     vscode
-    papirus-icon-theme
-    whitesur-kde
-    whitesur-gtk-theme
-    bibata-cursors
+    # papirus-icon-theme
+    # whitesur-kde
+    # whitesur-gtk-theme
+    # bibata-cursors
     neofetch
     latte-dock
   ];
@@ -48,31 +48,31 @@
     };
   };
 
-  programs.plasma = {
-    enable = true;
-    workspace = {
-      theme = "WhiteSur";               # Plasma Style
-      colorScheme = "WhiteSurDark";     # Color Scheme
-      lookAndFeel = "com.github.vinceliuice.WhiteSur-dark";         # Global Theme
-      clickItemTo = "select";           # Click Behavior
-    };
-  };
+  # programs.plasma = {
+  #   enable = true;
+  #   workspace = {
+  #     theme = "WhiteSur";               # Plasma Style
+  #     colorScheme = "WhiteSurDark";     # Color Scheme
+  #     lookAndFeel = "com.github.vinceliuice.WhiteSur-dark";         # Global Theme
+  #     clickItemTo = "select";           # Click Behavior
+  #   };
+  # };
 
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.whitesur-gtk-theme;
-      name = "WhiteSur-Dark";
-    };
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-    cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     package = pkgs.whitesur-gtk-theme;
+  #     name = "WhiteSur-Dark";
+  #   };
+  #   iconTheme = {
+  #     package = pkgs.papirus-icon-theme;
+  #     name = "Papirus-Dark";
+  #   };
+  #   cursorTheme = {
+  #     package = pkgs.bibata-cursors;
+  #     name = "Bibata-Modern-Classic";
+  #   };
+  # };
 
 }
 
