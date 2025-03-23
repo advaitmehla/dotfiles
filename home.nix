@@ -23,7 +23,8 @@
     # whitesur-gtk-theme
     # bibata-cursors
     neofetch
-    latte-dock
+    brave
+#     latte-dock
   ];
 
   home.file = {
