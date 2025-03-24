@@ -43,7 +43,7 @@
       ];
 
       specialArgs = {
-        inherit unstablePkgs inputs, customPkgs;
+        inherit unstablePkgs inputs customPkgs;
       };
     };
 
@@ -56,8 +56,8 @@
 
       modules = [ ./home.nix ];
     };
+    packages.${system} = customPkgs;
   };
-
   # Update system:
   # 1) nix flake update
   # 2) sudo nixos-rebuild switch --flake .

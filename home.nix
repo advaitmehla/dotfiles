@@ -4,7 +4,7 @@
   imports = [
     ./sh.nix
     inputs.plasma-manager.homeManagerModules.plasma-manager
-    # ./inputs.nix
+    ./plasma/panels.nix
   ];
 
   home.username = "advait";
@@ -25,6 +25,8 @@
     # bibata-cursors
     neofetch
     brave
+    plasma-panel-colorizer
+    plasma-applet-commandoutput
   ];
 
   home.file = {

@@ -8,7 +8,7 @@
   # klassy = pkgs.kdePackages.callPackage ./klassy.nix { };
   # krohnkite = pkgs.callPackage ./krohnkite.nix { };
   # kwin-effects-geometry-change = pkgs.callPackage ./kwin-effects-geometry-change { };
-  # panel-system-info = pkgs.callPackage ./panel-system-info { };
+  panel-system-info = pkgs.callPackage ./panel-system-info { };
   plasma-window-title-applet = pkgs.callPackage ./plasma-window-title-applet.nix { };
   # vscode-taskexplorer = pkgs.callPackage ./vscode-taskexplorer.nix { };
   # wallpaper = pkgs.callPackage ./wallpaper.nix { };
