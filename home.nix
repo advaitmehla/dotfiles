@@ -25,8 +25,6 @@
     # bibata-cursors
     neofetch
     brave
-#     latte-dock
-    libsForQt5.qtstyleplugin-kvantum
   ];
 
   home.file = {
@@ -50,33 +48,7 @@
         init.defaultBranch = "main";
     };
   };
-
-  # programs.plasma = {
-  #   enable = true;
-  #   workspace = {
-  #     theme = "WhiteSur";               # Plasma Style
-  #     colorScheme = "WhiteSurDark";     # Color Scheme
-  #     lookAndFeel = "com.github.vinceliuice.WhiteSur-dark";         # Global Theme
-  #     clickItemTo = "select";           # Click Behavior
-  #   };
-  # };
-
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     package = pkgs.whitesur-gtk-theme;
-  #     name = "WhiteSur-Dark";
-  #   };
-  #   iconTheme = {
-  #     package = pkgs.papirus-icon-theme;
-  #     name = "Papirus-Dark";
-  #   };
-  #   cursorTheme = {
-  #     package = pkgs.bibata-cursors;
-  #     name = "Bibata-Modern-Classic";
-  #   };
-  # };
-
+  
 }
 
 # To roll-back to previous configs:

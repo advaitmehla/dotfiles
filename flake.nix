@@ -12,7 +12,7 @@
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
   };
@@ -22,6 +22,10 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
+    customPkgs = import ./pkgs/default.nix { 
+      inherit pkgs;
+      lib = nixpkgs.lib;
+    };
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -39,7 +43,7 @@
       ];
 
       specialArgs = {
-        inherit unstablePkgs inputs;
+        inherit unstablePkgs inputs, customPkgs;
       };
     };
 
@@ -47,7 +51,7 @@
       inherit pkgs;
 
       extraSpecialArgs = {
-        inherit unstablePkgs inputs;
+        inherit unstablePkgs inputs customPkgs;
       };
 
       modules = [ ./home.nix ];
