@@ -91,6 +91,7 @@
     htop
     home-manager
     binutils
+    libinput
   ];
 
   # enable zsh as default

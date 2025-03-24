@@ -4,6 +4,7 @@
   imports = [
     ./sh.nix
     inputs.plasma-manager.homeManagerModules.plasma-manager
+    # ./inputs.nix
   ];
 
   home.username = "advait";
