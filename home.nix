@@ -51,7 +51,6 @@
         init.defaultBranch = "main";
     };
   };
-  
 }
 
 # To roll-back to previous configs:

@@ -106,6 +106,18 @@
     '';
   };
 
+
+  fonts.fontconfig.enable = true;
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      hack-font
+      nerdfonts
+    ];
+  };
+  fonts.fontconfig.defaultFonts = {
+    monospace = [ "Hack Nerd Font" ];
+  };
   system.stateVersion = "24.11"; # Probably don't change this
   nix.settings.experimental-features = ["nix-command" "flakes"];
 

@@ -12,6 +12,7 @@ color_reset = "\033[0m"
 
 bar_length = 9
 bar_symbol = "󱘹"
+# bar_symbol = "█" 
 
 spacing = 2
 spacing_char = "⠀"
@@ -67,7 +68,8 @@ def get_total_power_consumption():
     return total_power_now if total_power_now > 0 else None
 
 cpu = round(psutil.cpu_percent(interval=1, percpu=False))
-cpu_temp = round(psutil.sensors_temperatures()["coretemp"][0].current)
+# cpu_temp = round(psutil.sensors_temperatures()["coretemp"][0].current) for intel
+cpu_temp = round(psutil.sensors_temperatures()["k10temp"][0].current)  # for AMD
 cpu_freq = psutil.cpu_freq().current
 cpu_freq_suffix = "MHz"
 if cpu_freq >= 1000:
