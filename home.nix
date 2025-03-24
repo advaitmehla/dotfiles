@@ -26,6 +26,7 @@
     neofetch
     brave
 #     latte-dock
+    libsForQt5.qtstyleplugin-kvantum
   ];
 
   home.file = {
