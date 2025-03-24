@@ -10,11 +10,11 @@
     inherit (pkgs) plasma-applet-commandoutput plasma-panel-colorizer;
     inherit (customPkgs) plasma-window-title-applet panel-system-info;
   };
-  
+  programs.plasma.enable = true;
   programs.plasma.panels = [
     # Top panel with system info and controls
     {
-      height = 29;
+      height = 25;
       location = "top";
       floating = false;
       widgets = [
@@ -23,10 +23,27 @@
         }
         {
           name = "org.kde.windowtitle";
-          config.General = {
-            capitalFont = false;
-            filterActivityInfo = false;
-            useActivityIcon = false;
+          config = {
+            Appearance = {
+              txt = "%i"; # Use icon-only placeholder
+              altTxt = ""; # Empty alt text
+              txtSameFound = ""; # No duplicate handling
+              noIcon = false; # Ensure icons are enabled
+              fontSize = 0; # Collapse text space
+              fillThickness = true; # Better icon scaling
+              lengthKind = 3; # Fixed size policy (3 = Fill)
+              fixedLength = 24; # Match icon size
+            };
+            
+            Behavior = {
+              showTooltip = false; # Disable hover text
+            };
+
+            Substitutions = {
+              subsMatchApp = [".*"]; # Regex match all apps
+              subsMatchTitle = [".*"]; # Regex match all titles
+              subsReplace = [""]; # Replace with empty string
+            };
           };
         }
         "org.kde.plasma.appmenu"
@@ -43,20 +60,20 @@
         }
         {
           systemTray.items = {
-            hidden = [
-              "Clementine"
-              "org.kde.kscreen"
-              "org.kde.kdeconnect"
-              "org.kde.plasma.brightness"
-              "org.kde.plasma.cameraindicator"
-              "org.kde.plasma.clipboard"
-              "org.kde.plasma.keyboardlayout"
-              "org.kde.plasma.keyboardindicator"
-              "org.kde.plasma.manage-inputmethod"
-              "org.kde.plasma.mediacontroller"
-              "vmware-tray"
-              "Yakuake"
-            ];
+            # hidden = [
+            #   "Clementine"
+            #   "org.kde.kscreen"
+            #   "org.kde.kdeconnect"
+            #   "org.kde.plasma.brightness"
+            #   "org.kde.plasma.cameraindicator"
+            #   "org.kde.plasma.clipboard"
+            #   "org.kde.plasma.keyboardlayout"
+            #   "org.kde.plasma.keyboardindicator"
+            #   "org.kde.plasma.manage-inputmethod"
+            #   "org.kde.plasma.mediacontroller"
+            #   "vmware-tray"
+            #   "Yakuake"
+            # ];
             shown = [
               "org.kde.plasma.battery"
               "org.kde.plasma.volume"
@@ -66,8 +83,8 @@
         }
         {
           digitalClock = {
-            date.enable = false;
-            time.showSeconds = "always";
+            date.enable = true;
+            time.showSeconds = "never";
           };
         }
         {
@@ -98,7 +115,7 @@
       height = 52; # As shown in the image
       floating = true;
       alignment = "center";
-      visibility = "dodgeWindows";
+      hiding = "dodgewindows";
       opacity = "adaptive";
       widgets = [
         {
@@ -106,14 +123,13 @@
             launchers = [
               "applications:org.kde.dolphin.desktop"
               "applications:org.kde.konsole.desktop"
-              "applications:firefox.desktop"
-              "applications:org.kde.kate.desktop"
-              "applications:systemsettings.desktop"
-              "applications:org.kde.discover.desktop"
+              "applications:brave-browser.desktop"
+              "applications:code.desktop"
+
             ];
-            showOnlyCurrentDesktop = false;
-            showOnlyCurrentActivity = false;
-            indicateAudioStreams = true;
+            # showOnlyCurrentDesktop = false;
+            # showOnlyCurrentActivity = false;
+            # indicateAudioStreams = true;
           };
         }
       ];

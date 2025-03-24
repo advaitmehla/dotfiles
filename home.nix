@@ -27,6 +27,7 @@
     brave
     plasma-panel-colorizer
     plasma-applet-commandoutput
+    nix-prefetch-github
   ];
 
   home.file = {
