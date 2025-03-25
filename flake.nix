@@ -22,7 +22,7 @@
     system = "x86_64-linux";
     overlays = import ./overlays.nix;
     pkgs = import nixpkgs {
-      inherit system overlays;
+      inherit system;
     };
     unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
     customPkgs = import ./pkgs/default.nix { 

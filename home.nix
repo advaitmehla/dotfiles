@@ -25,7 +25,7 @@
     # bibata-cursors
     neofetch
     brave
-    plasma-panel-colorizer
+    # plasma-panel-colorizer
     plasma-applet-commandoutput
     nix-prefetch-github
   ];
