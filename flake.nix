@@ -2,11 +2,11 @@
   description = "Initial flake!";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensure consistency with nixpkgs
     };
 
@@ -22,7 +22,7 @@
     system = "x86_64-linux";
     overlays = import ./overlays.nix;
     pkgs = import nixpkgs {
-      inherit system;
+      inherit system overlays;
     };
     unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
     customPkgs = import ./pkgs/default.nix { 
@@ -39,6 +39,10 @@
         #   nixpkgs.overlays = [
         #     (final: prev: {
         #       kdePackages = nixpkgs-unstable.legacyPackages.${prev.system}.kdePackages;
+        #       plasma-panel-colorizer = nixpkgs-unstable.legacyPackages.${prev.system}.plasma-panel-colorizer;
+        #       plasma-applet-commandoutput = nixpkgs-unstable.legacyPackages.${prev.system}.plasma-applet-commandoutput;
+        #       # plasma-workspace = nixpkgs-unstable.legacyPackages.${prev.system}.plasma-workspace;
+        #       # kde-frameworks = nixpkgs-unstable.legacyPackages.${prev.system}.kdeFrameworks;
         #     })
         #   ];
         # })

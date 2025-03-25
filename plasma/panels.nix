@@ -7,7 +7,7 @@
 
 {
   home.packages = lib.attrValues {
-    inherit (pkgs) plasma-applet-commandoutput;
+    inherit (pkgs) plasma-applet-commandoutput plasma-panel-colorizer;
     inherit (customPkgs) plasma-window-title-applet panel-system-info;
   };
   programs.plasma.enable = true;
@@ -121,20 +121,20 @@
     # {
     #   name = "luisbocanegra.panel.colorizer";
     #   config.General = {
-    #     colorMode = "1";
-    #     colorModeTheme = "9";
-    #     enableCustomPadding = "true";
-    #     fgColorMode = "1";
-    #     fgContrastFixEnabled = "false";
-    #     fgLightness = "0.55";
-    #     hideWidget = "true";
-    #     marginRules = "org.kde.plasma.kickoff,1,0|org.kde.windowtitle,1,0|plasmusic-toolbar,0,-15";
-    #     panelPadding = "16";
-    #     panelRealBgOpacity = "0.5";
-    #     panelSpacing = "10";
-    #     radius = "7";
-    #     widgetBgEnabled = "false";
-    #     widgetBgVMargin = "3";
+    #     # colorMode = "1";
+    #     # colorModeTheme = "9";
+    #     # enableCustomPadding = "true";
+    #     # fgColorMode = "1";
+    #     # fgContrastFixEnabled = "false";
+    #     # fgLightness = "0.55";
+    #     # hideWidget = "true";
+    #     # marginRules = "org.kde.plasma.kickoff,1,0|org.kde.windowtitle,1,0|plasmusic-toolbar,0,-15";
+    #     # panelPadding = "16";
+    #     # panelRealBgOpacity = "0.5";
+    #     # panelSpacing = "10";
+    #     # radius = "7";
+    #     # widgetBgEnabled = "false";
+    #     # widgetBgVMargin = "3";
     #   };
     # }
   ];
@@ -161,25 +161,15 @@
             ];
           };
         }
-        # {
-        #   name = "luisbocanegra.panel.colorizer";
-        #   config.General = {
-        #     colorMode = "1";
-        #     colorModeTheme = "9";
-        #     enableCustomPadding = "true";
-        #     fgColorMode = "1";
-        #     fgContrastFixEnabled = "false";
-        #     fgLightness = "0.55";
-        #     hideWidget = "true";
-        #     # marginRules = "org.kde.plasma.kickoff,1,0|org.kde.windowtitle,1,0|plasmusic-toolbar,0,-15";
-        #     panelPadding = "16";
-        #     panelRealBgOpacity = "0.0";
-        #     panelSpacing = "10";
-        #     radius = "12";
-        #     widgetBgEnabled = "false";
-        #     widgetBgVMargin = "3";
-        #   };
-        # }
+    {
+      name = "luisbocanegra.panel.colorizer";
+      config.General = {
+        hideWidget = "true";
+        # globalSettings = ''{"nativePanelBackground": {"enabled": false}}'';        # panelWidgets = builtins.readFile ./widgets.json;
+      };
+    }
+
+  
       ];
     }
   ];
