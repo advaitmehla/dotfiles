@@ -98,7 +98,8 @@ elif cpu_temp >= 80:
 
 elements = [
     bar("CPU", cpu / 100, 1, 0.7, 0.9, f"{cpu}% "),
-    f"({cpu_freq} {cpu_freq_suffix}, {cpu_temp_color}{cpu_temp} °C{color_reset})",
+    # f"({cpu_freq} {cpu_freq_suffix}, {cpu_temp_color}{cpu_temp} °C{color_reset})",
+    f"({cpu_temp_color}{cpu_temp} °C{color_reset})",
     separator,
     bar("RAM", ram.total - ram.available, ram.total, 0.7, 0.9, ram_text)
 ]

@@ -111,12 +111,14 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      hack-font
+      inter
       nerdfonts
     ];
   };
   fonts.fontconfig.defaultFonts = {
     monospace = [ "Hack Nerd Font" ];
+    sansSerif = [ "Inter" ];
+    serif = [ "Inter" ];           
   };
   system.stateVersion = "24.11"; # Probably don't change this
   nix.settings.experimental-features = ["nix-command" "flakes"];

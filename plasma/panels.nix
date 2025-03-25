@@ -11,6 +11,8 @@
     inherit (customPkgs) plasma-window-title-applet panel-system-info;
   };
   programs.plasma.enable = true;
+
+  # top panel
   programs.plasma.panels = [
     {
   height = 22;
@@ -38,16 +40,9 @@
         };
       };
     }
-    {
-      name = "org.kde.plasma.appmenu";
-      config = {
-        Appearance = {
-          lengthKind = 3;  # 1 = Adaptive, 2 = Fixed, 3 = Max Length
-          fixedLength = 200; # Adjust this to suit your panel width
-          fontSize = 1;
-        };
-      };
-    }
+    # {
+    #   name = "org.kde.plasma.appmenu";
+    # }
 
     # **Make this panel spacer expandable to push elements apart**
     {
@@ -65,7 +60,9 @@
           use24hFormat = true;
           dateFormat = "custom"; 
           customDateFormat = "MMM d"; # "Mar 25" format
-          fontSize = 14;
+          autoFontAndSize = false;
+          fontSize = 10;
+          fontFamily = "Inter SemiBold";
         };
       };
     }
@@ -146,11 +143,12 @@
     # Bottom dock-style panel
     {
       location = "bottom";
-      height = 52; # As shown in the image
+      height = 60; # As shown in the image
       floating = true;
       alignment = "center";
       hiding = "dodgewindows";
-      opacity = "adaptive";
+      # opacity = "adaptive";
+      lengthMode = "fit";
       widgets = [
         {
           iconTasks = {
@@ -161,11 +159,27 @@
               "applications:code.desktop"
 
             ];
-            # showOnlyCurrentDesktop = false;
-            # showOnlyCurrentActivity = false;
-            # indicateAudioStreams = true;
           };
         }
+        # {
+        #   name = "luisbocanegra.panel.colorizer";
+        #   config.General = {
+        #     colorMode = "1";
+        #     colorModeTheme = "9";
+        #     enableCustomPadding = "true";
+        #     fgColorMode = "1";
+        #     fgContrastFixEnabled = "false";
+        #     fgLightness = "0.55";
+        #     hideWidget = "true";
+        #     # marginRules = "org.kde.plasma.kickoff,1,0|org.kde.windowtitle,1,0|plasmusic-toolbar,0,-15";
+        #     panelPadding = "16";
+        #     panelRealBgOpacity = "0.0";
+        #     panelSpacing = "10";
+        #     radius = "12";
+        #     widgetBgEnabled = "false";
+        #     widgetBgVMargin = "3";
+        #   };
+        # }
       ];
     }
   ];
