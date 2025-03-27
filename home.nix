@@ -24,6 +24,8 @@
     inputs.darkly.packages.${pkgs.system}.darkly-qt5
     inputs.darkly.packages.${pkgs.system}.darkly-qt6
     bibata-cursors
+    # kdePackages.sierra-breeze-enhanced
+    # kdePackages.kdecoration
 
     neofetch
     brave
@@ -35,9 +37,18 @@
     nix-prefetch-github
   ];
 
-  home.file = {
 
+  # enable git
+  programs.git = {
+    enable = true;
+    userName = "advaitmehla";
+    userEmail = "advait.mehla@gmail.com";
+    lfs.enable = true;  # If you need Git LFS
+    extraConfig = {
+        init.defaultBranch = "main";
+    };
   };
+
 
   home.sessionVariables = {
     EDITOR = "nano";
@@ -51,6 +62,12 @@
     iconTheme = "Papirus-Dark";
     theme = "breeze-dark";
     colorScheme = "BreezeDark";
+    cursor.theme = "Bibata-Modern-Ice";
+    # windowDecorations = {
+    #   library = "org.kde.kdecoration2";
+    #   theme = "SierraBreezeEnhanced";
+    #   # titlebarLayout = "MNCX";  # Menu, Minimize, Close, Maximize buttons
+    # };
   };
 
   qt = {
@@ -62,7 +79,39 @@
     platformTheme.name = "kde";
   };
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Breeze-Dark";
+      package = pkgs.kdePackages.breeze-gtk;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";  
+      package = pkgs.papirus-icon-theme;
+    };
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+      gtk-cursor-theme-name = "Bibata-Modern-Ice";
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+      gtk-cursor-theme-name = "Bibata-Modern-Ice";
+    };
+  };
 
+  home.pointerCursor = {
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    size = 24; # Adjust the size as needed
+    x11.enable = true;
+    gtk.enable = true;
+  };
+
+  programs.plasma.spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
 
 }
 
