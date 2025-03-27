@@ -5,6 +5,7 @@
     ./sh.nix
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./plasma/panels.nix
+    ./plasma/darkly.nix
   ];
 
   home.username = "advait";
@@ -19,10 +20,11 @@
     curl
     kdePackages.kate
     vscode
-    # papirus-icon-theme
-    # whitesur-kde
-    # whitesur-gtk-theme
-    # bibata-cursors
+    papirus-icon-theme
+    inputs.darkly.packages.${pkgs.system}.darkly-qt5
+    inputs.darkly.packages.${pkgs.system}.darkly-qt6
+    bibata-cursors
+
     neofetch
     brave
     slack
@@ -41,21 +43,27 @@
     EDITOR = "nano";
   };
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.plasma.workspace.wallpaper = "/home/advait/Pictures/Wallpapers/skip7_cr_rot.jpg";
-
-  # enable git
-  programs.git = {
-    enable = true;
-    userName = "advaitmehla";
-    userEmail = "advait.mehla@gmail.com";
-    lfs.enable = true;  # If you need Git LFS
-    extraConfig = {
-        init.defaultBranch = "main";
-    };
+  programs.plasma.enable = true;
+  programs.plasma.workspace = {
+    wallpaper = "/home/advait/Pictures/Wallpapers/skip7_cr_rot.jpg";
+    iconTheme = "Papirus-Dark";
+    theme = "breeze-dark";
+    colorScheme = "BreezeDark";
   };
+
+  qt = {
+    enable = true;
+    style.package = [
+      inputs.darkly.packages.${pkgs.system}.darkly-qt5
+      inputs.darkly.packages.${pkgs.system}.darkly-qt6
+    ];
+    platformTheme.name = "kde";
+  };
+
+
+
 }
 
 # To roll-back to previous configs:

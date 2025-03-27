@@ -126,6 +126,6 @@
   system.stateVersion = "24.11"; # Probably don't change this
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # services.blueman.enable = true;
+  systemd.services."user@".serviceConfig.TimeoutStopSec = "5s"; # Workaround for slow shutdown
 
 }

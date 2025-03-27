@@ -10,7 +10,6 @@
     inherit (pkgs) plasma-applet-commandoutput plasma-panel-colorizer;
     inherit (customPkgs) plasma-window-title-applet panel-system-info;
   };
-  programs.plasma.enable = true;
 
   # top panel
   programs.plasma.panels = [
@@ -150,17 +149,22 @@
       # opacity = "adaptive";
       lengthMode = "fit";
       widgets = [
-        {
-          iconTasks = {
+      {
+        name = "org.kde.plasma.icontasks";
+        config = {
+          General = {
+            showToolTips = false; # This disables tooltips
+            interactiveMute = false;
+            tooltipControls = false;
             launchers = [
               "applications:brave-browser.desktop"
               "applications:org.kde.dolphin.desktop"
               "applications:org.kde.konsole.desktop"
               "applications:code.desktop"
-
             ];
           };
-        }
+        };
+      }
     # {
     #   name = "luisbocanegra.panel.colorizer";
     #   config.General = {
