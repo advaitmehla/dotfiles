@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/29cda8df-55c7-472c-bf3a-03274d48fcc0";
@@ -29,6 +30,13 @@
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+
+  # done manually to match ubuntu mount paths
+  fileSystems."/media/advait/DATA" = {
+    device = "/dev/disk/by-uuid/E488FB0188FAD152";
+    fsType = "ntfs-3g";
+    options = [ "defaults" ];
+  };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/f7bb3b38-00e3-493d-914c-2579a7e1fab4"; }

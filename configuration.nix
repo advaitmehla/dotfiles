@@ -51,6 +51,12 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+   # Used by KDE to obtain location
+  services.geoclue2.enable = true;
+
+  services.power-profiles-daemon.enable = true;
+
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -93,7 +99,7 @@
     libinput
     bluez-tools
     toybox
-    power-profiles-daemon
+    powertop
   ];
 
   # enable zsh as default
@@ -106,6 +112,14 @@
       eval "$(micromamba shell hook --shell zsh)"
       micromamba activate basic
     '';
+  };
+
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+    user = "advait";
+    group = "users";
+    dataDir = "/home/advait/local/sonarr";
   };
 
 

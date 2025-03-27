@@ -5,7 +5,8 @@
     ./sh.nix
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./plasma/panels.nix
-    ./plasma/darkly.nix
+    # ./plasma/darkly.nix
+    ./plasma/shortcuts.nix
   ];
 
   home.username = "advait";
@@ -19,7 +20,8 @@
     hello
     curl
     kdePackages.kate
-    vscode
+    kdePackages.networkmanager-qt
+    
     papirus-icon-theme
     inputs.darkly.packages.${pkgs.system}.darkly-qt5
     inputs.darkly.packages.${pkgs.system}.darkly-qt6
@@ -31,6 +33,9 @@
     brave
     slack
     zoom-us
+    vscode
+    qbittorrent
+    vlc
     
     plasma-panel-colorizer
     plasma-applet-commandoutput
@@ -48,7 +53,6 @@
         init.defaultBranch = "main";
     };
   };
-
 
   home.sessionVariables = {
     EDITOR = "nano";
@@ -76,7 +80,7 @@
       inputs.darkly.packages.${pkgs.system}.darkly-qt5
       inputs.darkly.packages.${pkgs.system}.darkly-qt6
     ];
-    platformTheme.name = "kde";
+    # platformTheme.name = "kde";
   };
 
   gtk = {

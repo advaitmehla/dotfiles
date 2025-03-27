@@ -109,13 +109,13 @@
       };
     }
 
-    # **This spacer pushes everything to the right edge**
-    {
-      name = "org.kde.plasma.panelspacer";
-      config = {
-        General.expanding = false;
-      };
-    }
+    # # **This spacer pushes everything to the right edge**
+    # {
+    #   name = "org.kde.plasma.panelspacer";
+    #   config = {
+    #     General.expanding = false;
+    #   };
+    # }
 
     {
       name = "luisbocanegra.panel.colorizer";
