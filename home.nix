@@ -44,6 +44,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.plasma.workspace.wallpaper = "/home/advait/Pictures/Wallpapers/skip7_cr_rot.jpg";
+
   # enable git
   programs.git = {
     enable = true;

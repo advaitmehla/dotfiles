@@ -92,6 +92,9 @@
     home-manager
     binutils
     libinput
+    bluez-tools
+    toybox
+    power-profiles-daemon
   ];
 
   # enable zsh as default
@@ -122,5 +125,7 @@
   };
   system.stateVersion = "24.11"; # Probably don't change this
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # services.blueman.enable = true;
 
 }
