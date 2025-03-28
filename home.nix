@@ -7,6 +7,7 @@
     ./plasma/panels.nix
     # ./plasma/darkly.nix
     ./plasma/shortcuts.nix
+    ./autostart.nix
   ];
 
   home.username = "advait";
@@ -17,29 +18,30 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    hello
+    # utilities
     curl
     kdePackages.kate
-    kdePackages.networkmanager-qt
-    
-    papirus-icon-theme
-    inputs.darkly.packages.${pkgs.system}.darkly-qt5
-    inputs.darkly.packages.${pkgs.system}.darkly-qt6
-    bibata-cursors
-    # kdePackages.sierra-breeze-enhanced
-    # kdePackages.kdecoration
-
+    nix-prefetch-github
     neofetch
+    
+    # apps
     brave
     slack
     zoom-us
     vscode
     qbittorrent
     vlc
+    discord
     
+    # theming
     plasma-panel-colorizer
     plasma-applet-commandoutput
-    nix-prefetch-github
+    papirus-icon-theme
+    inputs.darkly.packages.${pkgs.system}.darkly-qt5
+    inputs.darkly.packages.${pkgs.system}.darkly-qt6
+    bibata-cursors
+    # kdePackages.sierra-breeze-enhanced
+    # kdePackages.kdecoration
   ];
 
 
@@ -83,29 +85,29 @@
     # platformTheme.name = "kde";
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Breeze-Dark";
-      package = pkgs.kdePackages.breeze-gtk;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";  
-      package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-      gtk-cursor-theme-name = "Bibata-Modern-Ice";
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-      gtk-cursor-theme-name = "Bibata-Modern-Ice";
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Breeze-Dark";
+  #     package = pkgs.kdePackages.breeze-gtk;
+  #   };
+  #   iconTheme = {
+  #     name = "Papirus-Dark";  
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  #   cursorTheme = {
+  #     name = "Bibata-Modern-Ice";
+  #     package = pkgs.bibata-cursors;
+  #   };
+  #   gtk3.extraConfig = {
+  #     gtk-application-prefer-dark-theme = true;
+  #     gtk-cursor-theme-name = "Bibata-Modern-Ice";
+  #   };
+  #   gtk4.extraConfig = {
+  #     gtk-application-prefer-dark-theme = true;
+  #     gtk-cursor-theme-name = "Bibata-Modern-Ice";
+  #   };
+  # };
 
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";

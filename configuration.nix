@@ -122,6 +122,14 @@
     dataDir = "/home/advait/local/sonarr";
   };
 
+  services.jackett = {
+    enable = true;
+    openFirewall = true;
+    user = "advait";
+    group = "users";
+    dataDir = "/home/advait/local/jackett";
+  };
+
 
   fonts.fontconfig.enable = true;
   fonts = {
