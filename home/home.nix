@@ -3,13 +3,11 @@
 {
   imports = [
     ./shell/default.nix
-    inputs.plasma-manager.homeManagerModules.plasma-manager
-    ./plasma/panels.nix
-    # ./plasma/darkly.nix
-    ./plasma/shortcuts.nix
+    ./plasma/default.nix
     ./autostart.nix
   ];
-
+  
+  programs.home-manager.enable = true;
   home.username = "advait";
   home.homeDirectory = "/home/advait";
 
@@ -33,16 +31,6 @@
     qbittorrent
     vlc
     discord
-    
-    # theming
-    plasma-panel-colorizer
-    plasma-applet-commandoutput
-    papirus-icon-theme
-    inputs.darkly.packages.${pkgs.system}.darkly-qt5
-    inputs.darkly.packages.${pkgs.system}.darkly-qt6
-    bibata-cursors
-    # kdePackages.sierra-breeze-enhanced
-    # kdePackages.kdecoration
   ];
 
 
@@ -60,65 +48,6 @@
   home.sessionVariables = {
     EDITOR = "nano";
   };
-
-  programs.home-manager.enable = true;
-
-  programs.plasma.enable = true;
-  programs.plasma.workspace = {
-    wallpaper = "/home/advait/Pictures/Wallpapers/skip7_cr_rot.jpg";
-    iconTheme = "Papirus-Dark";
-    theme = "breeze-dark";
-    colorScheme = "BreezeDark";
-    cursor.theme = "Bibata-Modern-Ice";
-    # windowDecorations = {
-    #   library = "org.kde.kdecoration2";
-    #   theme = "SierraBreezeEnhanced";
-    #   # titlebarLayout = "MNCX";  # Menu, Minimize, Close, Maximize buttons
-    # };
-  };
-
-  qt = {
-    enable = true;
-    style.package = [
-      inputs.darkly.packages.${pkgs.system}.darkly-qt5
-      inputs.darkly.packages.${pkgs.system}.darkly-qt6
-    ];
-    # platformTheme.name = "kde";
-  };
-
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     name = "Breeze-Dark";
-  #     package = pkgs.kdePackages.breeze-gtk;
-  #   };
-  #   iconTheme = {
-  #     name = "Papirus-Dark";  
-  #     package = pkgs.papirus-icon-theme;
-  #   };
-  #   cursorTheme = {
-  #     name = "Bibata-Modern-Ice";
-  #     package = pkgs.bibata-cursors;
-  #   };
-  #   gtk3.extraConfig = {
-  #     gtk-application-prefer-dark-theme = true;
-  #     gtk-cursor-theme-name = "Bibata-Modern-Ice";
-  #   };
-  #   gtk4.extraConfig = {
-  #     gtk-application-prefer-dark-theme = true;
-  #     gtk-cursor-theme-name = "Bibata-Modern-Ice";
-  #   };
-  # };
-
-  home.pointerCursor = {
-    name = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors;
-    size = 24; # Adjust the size as needed
-    x11.enable = true;
-    gtk.enable = true;
-  };
-
-  programs.plasma.spectacle.shortcuts.captureRectangularRegion = "Meta+Shift+S";
 
 }
 
