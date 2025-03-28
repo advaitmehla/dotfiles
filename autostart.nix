@@ -1,3 +1,5 @@
+{pkgs, ...}:
+
 let 
   autostartPrograms = [ 
     # pkgs.steam
