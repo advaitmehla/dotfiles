@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./sh.nix
+    ./shell/default.nix
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./plasma/panels.nix
     # ./plasma/darkly.nix
@@ -20,6 +20,7 @@
   home.packages = with pkgs; [
     # utilities
     curl
+    tree
     kdePackages.kate
     nix-prefetch-github
     neofetch

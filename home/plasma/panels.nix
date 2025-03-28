@@ -153,8 +153,8 @@
         name = "org.kde.plasma.icontasks";
         config = {
           General = {
-            showToolTips = false; # This disables tooltips
-            interactiveMute = false;
+            showToolTips = false; 
+            interactiveMute = true;
             tooltipControls = false;
             launchers = [
               "applications:brave-browser.desktop"

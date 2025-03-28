@@ -25,7 +25,7 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @ inputs:
   let
     system = "x86_64-linux";
-    overlays = import ./overlays.nix;
+    overlays = import ./overlays/default.nix;
     pkgs = import nixpkgs {
       inherit system overlays;
     };
@@ -66,7 +66,7 @@
         inherit unstablePkgs inputs customPkgs;
       };
 
-      modules = [ ./home.nix ];
+      modules = [ ./home/home.nix ];
     };
     packages.${system} = customPkgs;
   };
