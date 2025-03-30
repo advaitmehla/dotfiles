@@ -29,17 +29,11 @@
 
 
     initExtra = ''
-      # source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-      # source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      # source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       source ${pkgs.zinit}/share/zinit/zinit.zsh
-
-      zinit ice depth=1; zinit light romkatv/powerlevel10k
-      zinit light zsh-users/zsh-syntax-highlighting
-      zinit light zsh-users/zsh-completions
-      zinit light zsh-users/zsh-autosuggestions     
-      zinit light Aloxaf/fzf-tab
+    
 
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
@@ -50,8 +44,12 @@
 
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-      zstyle ':completion:*' menu no
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+      # zstyle ':completion:*' menu no
+      # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+      zinit snippet OMZP::git
+      zinit snippet OMZP::sudo
+      # zinit snippet OMZP::command-not-found
 
       HISTDUP=erase
       eval "$(fzf --zsh)"

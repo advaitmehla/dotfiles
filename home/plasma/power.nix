@@ -53,7 +53,7 @@
       
       # Optional appearance settings
       appearance = {
-        showMediaControls = false;
+        showMediaControls = true;
         alwaysShowClock = true;
       };
     };
