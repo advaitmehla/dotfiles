@@ -12,7 +12,7 @@ let
     "Meta+Ctrl+Shift+R" = "systemctl reboot";
     "Meta+Ctrl+Shift+S" = "systemctl suspend";
     "Ctrl+Shift+Esc" = "plasma-systemmonitor";
-    "Meta+T" = "konsole";
+    "Meta+T" = "konsole"; 
     # "Meta+Shift+C" = "clementine";
     # "Meta+Shift+F" = "firefox";
     # "Meta+Shift+Return" = "konsole";
@@ -47,7 +47,6 @@ in
         "Show Desktop" = "none,none,Show Desktop";
         "MinimizeAll" = "Meta+D";
         "Toggle Tiles Editor" = "Alt+T,none,Toggle Tiles Editor";
-        "Window Fullscreen" = "Meta+F,none,Window Fullscreen";
       };
       Konsole = {
         "Launch" = "none,none,Launch";

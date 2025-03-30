@@ -6,6 +6,7 @@
     ./panels.nix
     ./darkly.nix
     ./shortcuts.nix
+    ./power.nix
   ];
 
   home.packages = with pkgs; [

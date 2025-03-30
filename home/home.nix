@@ -31,6 +31,7 @@
     qbittorrent
     vlc
     discord
+    wezterm
   ];
 
 

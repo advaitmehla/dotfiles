@@ -159,7 +159,7 @@
             launchers = [
               "applications:brave-browser.desktop"
               "applications:org.kde.dolphin.desktop"
-              "applications:org.kde.konsole.desktop"
+              # "applications:org.kde.konsole.desktop"
               "applications:code.desktop"
             ];
           };
