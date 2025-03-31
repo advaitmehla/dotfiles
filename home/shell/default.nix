@@ -10,6 +10,7 @@
     fzf
     # zsh-fzf-tab
     zinit
+    zoxide
   ];
 
   programs.zsh = {
@@ -29,10 +30,13 @@
 
 
     initExtra = ''
+      source ${pkgs.zinit}/share/zinit/zinit.zsh
       source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      source ${pkgs.zinit}/share/zinit/zinit.zsh
+      
+      # source ~/.fzf-tab-completion/zsh/fzf-zsh-completion.sh
+      # bindkey '^I' fzf_completion
     
 
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
@@ -44,6 +48,7 @@
 
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+      # zstyle ':completion:*:*:git:*' fzf-search-display true
       # zstyle ':completion:*' menu no
       # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
@@ -53,6 +58,8 @@
 
       HISTDUP=erase
       eval "$(fzf --zsh)"
+      eval "$(zoxide init --cmd cd zsh)"
+
     '';
 
     history = {
