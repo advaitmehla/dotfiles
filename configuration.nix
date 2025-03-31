@@ -7,6 +7,8 @@
     ];
 
   # Bootloader.
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub.useOSProber = true;
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
@@ -17,6 +19,7 @@
       efiSupport = true;
       #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
       device = "nodev";
+      theme = "${pkgs.minimal-grub-theme}/";
     };
   };
 
@@ -110,6 +113,7 @@
     bluez-tools
     toybox
     powertop
+    minimal-grub-theme
   ];
 
   # enable zsh as default

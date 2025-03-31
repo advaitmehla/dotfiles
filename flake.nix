@@ -16,6 +16,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    kwin-better-blur = {
+      url = "github:taj-ny/kwin-effects-forceblur/window-rules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     darkly = {
       url = "github:Bali10050/Darkly";
       inputs.nixpkgs.follows = "nixpkgs";

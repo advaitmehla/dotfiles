@@ -61,6 +61,20 @@
 
       # Load zoxide with custom 'cd' alias
       eval "$(zoxide init --cmd cd zsh)"
+
+      lspkg() {
+        local pkg_path
+        pkg_path=$(nix eval --raw nixpkgs#$1 2>/dev/null)
+        if [[ -d "$pkg_path" ]]; then
+          ls "$pkg_path"
+        else
+          echo "Package '$1' not found or invalid."
+        fi
+      }
+
+      nixpkg-path() {
+        nix eval --raw nixpkgs#$1 2>/dev/null || echo "Package '$1' not found."
+      }
     '';
 
 

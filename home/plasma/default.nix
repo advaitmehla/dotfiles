@@ -16,7 +16,9 @@
     papirus-icon-theme
     inputs.darkly.packages.${pkgs.system}.darkly-qt5
     inputs.darkly.packages.${pkgs.system}.darkly-qt6
+    inputs.kwin-better-blur.packages.${pkgs.system}.default
     bibata-cursors
+    kde-rounded-corners
     # kdePackages.sierra-breeze-enhanced
     # kdePackages.kdecoration
   ];
