@@ -7,6 +7,7 @@
     ./darkly.nix
     ./shortcuts.nix
     ./power.nix
+    ./kwin/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -76,7 +77,7 @@
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
     package = pkgs.bibata-cursors;
-    size = 24;
+    size = 20;
     x11.enable = true;
     gtk.enable = true;
   };

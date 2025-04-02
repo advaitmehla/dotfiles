@@ -3,7 +3,7 @@
 
 {
   home.packages = with pkgs; [
-    # zsh-autosuggestions
+    zsh-autosuggestions
     # zsh-syntax-highlighting
     # zsh-powerlevel10k
     # fzf-zsh
@@ -31,11 +31,11 @@
 
     initExtra = ''
       source ${pkgs.zinit}/share/zinit/zinit.zsh
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
       # Async plugin loading
       zinit wait'0' lucid light-mode for \
         zdharma-continuum/fast-syntax-highlighting \
-        zsh-users/zsh-autosuggestions \
         zsh-users/zsh-syntax-highlighting
 
       zinit snippet OMZP::git

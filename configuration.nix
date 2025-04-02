@@ -100,6 +100,7 @@
   programs.dconf.enable = true;
 
   programs.nix-ld.enable = true;
+  programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     nano
     wget
@@ -159,7 +160,7 @@
     serif = [ "Inter" ];           
   };
   system.stateVersion = "24.11"; # Probably don't change this
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
 
   systemd.services."user@".serviceConfig.TimeoutStopSec = "5s"; # Workaround for slow shutdown
 

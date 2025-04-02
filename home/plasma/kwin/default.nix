@@ -5,8 +5,11 @@
 }:
 
 {
-  imports = lib.allExceptThisDefault ./.;
-
+  imports = [
+    ./blur.nix
+    ./rounded-corners.nix
+    ./custom.nix
+  ];
   custom.programs.plasma.kwin = {
     cornerRadius = 15;
     forceTransparency = {
@@ -16,9 +19,11 @@
         "kwrite"
         "plasmashell"
         "systemsettings"
-        "com.visualstudio.code"
-        "com.slack.Slack"
-        "com.discordapp.Discord"
+        "code"
+        "slack"
+        # "com.discordapp.Discord"
+        "qbittorrent"
+        "konsole"
       ];
     };
     reconfigure.effects = [
