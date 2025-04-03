@@ -26,18 +26,20 @@
 
   programs.home-manager.enable = true;
 
-  programs.plasma.enable = true;
-  programs.plasma.workspace = {
-    wallpaper = "/home/advait/Pictures/Wallpapers/skip7_cr_rot.jpg";
-    iconTheme = "Papirus-Dark";
-    theme = "breeze-dark";
-    colorScheme = "BreezeDark";
-    cursor.theme = "Bibata-Modern-Ice";
-    # windowDecorations = {
-    #   library = "org.kde.kdecoration2";
-    #   theme = "SierraBreezeEnhanced";
-    #   # titlebarLayout = "MNCX";  # Menu, Minimize, Close, Maximize buttons
-    # };
+  programs.plasma = {
+    enable = true;
+    workspace = {
+      wallpaper = "/home/advait/Pictures/Wallpapers/skip7_cr_rot.jpg";
+      iconTheme = "Papirus-Dark";
+      theme = "breeze-dark";
+      colorScheme = "BreezeDark";
+      cursor.theme = "Bibata-Modern-Ice";
+      # windowDecorations = {
+      #   library = "org.kde.kdecoration2";
+      #   theme = "SierraBreezeEnhanced";
+      #   # titlebarLayout = "MNCX";  # Menu, Minimize, Close, Maximize buttons
+      # };
+    };
   };
 
   qt = {

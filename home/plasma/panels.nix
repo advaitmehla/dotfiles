@@ -14,7 +14,7 @@
   # top panel
   programs.plasma.panels = [
     {
-  height = 22;
+  height = 28;
   location = "top";
   floating = false;
   widgets = [
@@ -59,9 +59,9 @@
           use24hFormat = true;
           dateFormat = "custom"; 
           customDateFormat = "MMM d"; # "Mar 25" format
-          autoFontAndSize = false;
-          fontSize = 10;
+          autoFontAndSize = true;
           fontFamily = "Inter SemiBold";
+          dateDisplayFormat="BesideTime";
         };
       };
     }
@@ -79,7 +79,7 @@
       config.General = {
         command = "${customPkgs.panel-system-info}/bin/panel-system-info";
         fontFamily = "Hack Nerd Font";
-        fontSize = 8;
+        fontSize = 10;
         interval = 0;
         waitForCompletion = true;
       };
@@ -129,7 +129,7 @@
         hideWidget = "true";
         marginRules = "org.kde.plasma.kickoff,1,0|org.kde.windowtitle,1,0|plasmusic-toolbar,0,-15";
         panelPadding = "16";
-        panelRealBgOpacity = "0.10";
+        panelRealBgOpacity = "0.40";
         panelSpacing = "10";
         radius = "7";
         widgetBgEnabled = "false";
@@ -142,7 +142,7 @@
     # Bottom dock-style panel
     {
       location = "bottom";
-      height = 60; # As shown in the image
+      height = 76; # As shown in the image
       floating = true;
       alignment = "center";
       hiding = "dodgewindows";
@@ -165,13 +165,25 @@
           };
         };
       }
-    # {
-    #   name = "luisbocanegra.panel.colorizer";
-    #   config.General = {
-    #     hideWidget = "true";
-    #     # globalSettings = ''{"nativePanelBackground": {"enabled": false}}'';        # panelWidgets = builtins.readFile ./widgets.json;
-    #   };
-    # }
+    {
+      name = "luisbocanegra.panel.colorizer";
+      config.General = {
+        colorMode = "1";
+        colorModeTheme = "9";
+        # enableCustomPadding = "true";
+        fgColorMode = "1";
+        fgContrastFixEnabled = "false";
+        fgLightness = "0.55";
+        hideWidget = "true";
+        # marginRules = "org.kde.plasma.kickoff,1,0|org.kde.windowtitle,1,0|plasmusic-toolbar,0,-15";
+        panelPadding = "16";
+        panelRealBgOpacity = "0.40";
+        panelSpacing = "10";
+        radius = "7";
+        widgetBgEnabled = "false";
+        widgetBgVMargin = "3";
+      };
+    }
 
   
       ];
