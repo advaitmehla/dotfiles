@@ -21,9 +21,10 @@
         "systemsettings"
         "code"
         "slack"
-        # "com.discordapp.Discord"
         "qbittorrent"
         "konsole"
+        "discord"
+        "steam"
       ];
     };
     reconfigure.effects = [

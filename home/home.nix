@@ -22,6 +22,7 @@
     kdePackages.kate
     nix-prefetch-github
     neofetch
+    compsize
     
     # apps
     brave
